@@ -54,25 +54,25 @@ console.log(matrix)
             // }
             else if (matrix[y][x] == 2) {
                 if (grassEaterArr.length <= 20) {
-                    var grEater = new GrassEater(x, y);
+                    let grEater = new GrassEater(x, y);
                     grassEaterArr.push(grEater);
                 }
                 else matrix[y][x] = 0;
             }
             else if (matrix[y][x] == 3) {
                 if (grassEaterEaterArr.length <= 20) {
-                    var grEatEater = new GrassEaterEater(x, y);
+                    let grEatEater = new GrassEaterEater(x, y);
                     grassEaterEaterArr.push(grEatEater);
                 }
                 else matrix[y][x] = 0;
             }
             else if (matrix[y][x] == 4) {
-                var randBomb = new Bomber(x, y);
+                let randBomb = new Bomber(x, y);
                 BombArr.push(randBomb);
             }
             else if (matrix[y][x] == 5) {
                 if (BombDestroyerArr.length <= 20) {
-                    var bombDest = new BomberDestroyer(x, y);
+                    let bombDest = new BomberDestroyer(x, y);
                     BombDestroyerArr.push(bombDest);
                 }
                 else matrix[y][x] = 0;
@@ -148,6 +148,7 @@ function draw() {
     
     for (var i in grassArr) {
         grassArr[i].mul();
+        grassArr[i].die();
     }
     for (var i in grassEaterArr) {
         grassEaterArr[i].eat();

@@ -1,6 +1,7 @@
-class GrassEater {
+class GrassEater extends LivingCreature {
     constructor(x, y, index) {
-        this.x = x;
+        super(x, y, index);
+         this.x = x;
         this.y = y;
         this.energy = 100;
         this.index = index;
@@ -29,19 +30,8 @@ class GrassEater {
     }
     chooseCell(character) {
         this.getNewCordinates()
-        let found = []
-        for (let i in this.directions) {
-            let x = this.directions[i][0];
-            let y = this.directions[i][1];
-            if (x >= 0 && y > 0 && x < matrix[0].length && matrix.length) {
-                if (matrix[x][y] == character) {
-                    found.push(this.directions[i]);
-                }
-            }
+    return super.chooseCell(character);
         }
-
-        return found;
-    }
 
     mul() {
         let azatkordinatner = this.chooseCell(1)
@@ -58,12 +48,12 @@ class GrassEater {
     }
 
     eat() {
-    var emptyCells = this.chooseCell(1);
-    var newCell = random(emptyCells);
+    let emptyCells = this.chooseCell(1);
+    let newCell = random(emptyCells);
     if(newCell) {
         this.energy++
-        var newX = newCell[0];
-        var newY = newCell[1];
+        let newX = newCell[0];
+        let newY = newCell[1];
         matrix[newY][newX] = matrix[this.y][this.x]
         matrix[this.y][this.x] = 0;
         this.x = newX
@@ -71,7 +61,7 @@ class GrassEater {
         if(this.energy > 15) {
             this.mul()
         }
-        for (var i in grassArr) {
+        for (let i in grassArr) {
             if (newX == grassArr[i].x && newY == grassArr[i].y) {
                 grassArr.splice(i, 1);
                 break;
@@ -85,11 +75,11 @@ class GrassEater {
 
      move() {
     this.energy--
-    var emptyCells = this.chooseCell(0);
-    var newCell = random(emptyCells);
+    let emptyCells = this.chooseCell(0);
+    let newCell = random(emptyCells);
     if(newCell && this.energy >= 0) {
-        var newX = newCell[0];
-        var newY = newCell[1];
+        let newX = newCell[0];
+        let newY = newCell[1];
         matrix[newY][newX] = matrix[this.y][this.x]
         matrix[this.y][this.x] = 0;
         this.x = newX

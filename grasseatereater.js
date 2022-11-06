@@ -31,10 +31,10 @@ class GrassEaterEater extends LivingCreature {
         this.energy--;
         var emptyCells = this.chooseCell(0);
         if (emptyCells.length != 0) {
-            var randomCell = random(emptyCells);
+            let randomCell = random(emptyCells);
 
-            var x = randomCell[0];
-            var y = randomCell[1];
+            let x = randomCell[0];
+            let y = randomCell[1];
 
             matrix[y][x] = 3;
             matrix[this.y][this.x] = 0;
@@ -51,10 +51,10 @@ class GrassEaterEater extends LivingCreature {
             var grassEatCells = this.chooseCell(2);
             if (grassEatCells.length != 0) {
                 this.energy++;
-                var randomCell = random(grassEatCells);
+                let randomCell = random(grassEatCells);
                 
-                var x = randomCell[0];
-                var y = randomCell[1];
+                let x = randomCell[0];
+                let y = randomCell[1];
 
                 matrix[y][x] = 3;
                 matrix[this.y][this.x] = 0;

@@ -36,13 +36,13 @@ class BomberDestroyer extends LivingCreature {
 
     
     destroy() {
-        var bombCells = this.chooseCell(4);
+        let bombCells = this.chooseCell(4);
         if (bombCells.length != 0) {
             this.energy+=2;
-            var randomCell = random(bombCells);
+            let randomCell = random(bombCells);
 
-            var x = randomCell[0];
-            var y = randomCell[1];
+            let x = randomCell[0];
+            let y = randomCell[1];
 
             matrix[y][x] = 6;
             matrix[this.y][this.x] = 0;
@@ -50,7 +50,7 @@ class BomberDestroyer extends LivingCreature {
             this.x = x;
             this.y = y;
 
-            for (var i in BombArr) {
+            for (let i in BombArr) {
                 if (this.x == BombArr[i].x && this.y == BombArr[i].y) {
                     BombArr.splice(i, 1);
                     break;
@@ -65,12 +65,12 @@ class BomberDestroyer extends LivingCreature {
         if (this.energy >= 50) this.die();
         else {
             this.energy++;
-            var emptyCells = this.chooseCell(0);
+            let emptyCells = this.chooseCell(0);
             if (emptyCells.length != 0) {
                 var randomCell = random(emptyCells);
 
-                var x = randomCell[0];
-                var y = randomCell[1];
+                let x = randomCell[0];
+                let y = randomCell[1];
 
                 matrix[y][x] = 6;
                 matrix[this.y][this.x] = 0;
@@ -84,7 +84,7 @@ class BomberDestroyer extends LivingCreature {
     
     die() {
         matrix[this.y][this.x] = 0;
-        for (var i in BombDestroyerArr) {
+        for (let i in BombDestroyerArr) {
             if (this.x == BombDestroyerArr[i].x && this.y == BombDestroyerArr[i].y) {
                 BombDestroyerArr.splice(i, 1);
                 break;
